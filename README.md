@@ -1,5 +1,5 @@
 # popdemog
-Demographic history visualization from simulation script
+Demographic history visualization from coalescent simulation script
 
 How to install and use this package: please see the tutorial file popdemog.html
 
