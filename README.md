@@ -10,5 +10,6 @@ R function manu: popdemog-manual.pdf
 Tutorial: popdemog-tutorial.html (Open it with any browsers)
 
 Install:
+
   install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.0.tar.gz", repos = NULL)
    
