@@ -167,46 +167,46 @@ $(document).ready(function () {
 <table>
 <thead>
 <tr class="header">
-<th>Simulator</th>
-<th>Keyword</th>
-<th>Notes</th>
+<th align="center">Simulator</th>
+<th align="center">Keyword</th>
+<th align="left">Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Cosi</td>
-<td>“cosi”</td>
-<td>parameter file</td>
+<td align="center">Cosi</td>
+<td align="center">“cosi”</td>
+<td align="left">parameter file as the input</td>
 </tr>
 <tr class="even">
-<td>ms</td>
-<td>“ms”</td>
-<td></td>
+<td align="center">ms</td>
+<td align="center">“ms”</td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
-<td>msa</td>
-<td>“msa”</td>
-<td></td>
+<td align="center">msa</td>
+<td align="center">“msa”</td>
+<td align="left"></td>
 </tr>
 <tr class="even">
-<td>msHot</td>
-<td>“mshot”</td>
-<td></td>
+<td align="center">msHot</td>
+<td align="center">“mshot”</td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
-<td>msprime</td>
-<td>“msprime”</td>
-<td>need to convert to ms-compatile format</td>
+<td align="center">msprime</td>
+<td align="center">“msprime”</td>
+<td align="left">need to convert to ms-compatile format as the input</td>
 </tr>
 <tr class="even">
-<td>MaCS</td>
-<td>“macs”</td>
-<td></td>
+<td align="center">MaCS</td>
+<td align="center">“macs”</td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
-<td>SCRM</td>
-<td>“scrm”</td>
-<td></td>
+<td align="center">SCRM</td>
+<td align="center">“scrm”</td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>
@@ -228,7 +228,7 @@ $(document).ready(function () {
 <p>The <code>input.file</code> contains the all information for demographic history, it can be a copy of simulation script or the parameter file from simulation tools.</p>
 <p>For example, the script of ms</p>
 <pre><code>./ms 1 1 -r 25 250001 -t 2.5 -I 4 50 50 50 60 -n 1 10 -n 2 10 -n 3 10 -n 4 10 -em 0 1 4 0.32 -em 0 4 1 0.32 -em 0 3 4 0.08 -em 0 4 3 0.08 -em 5e-04 2 1 2000 -em 6e-04 2 1 0 -ej 7e-04 2 4 -en 0.02 4 2.4 -en 0.035 1 0.77 -en 0.04 3 0.77 -en 0.1997 4 0.0125 -en 0.1998 3 0.00149253731343284 -en 0.1999 1 0.005 -ej 0.2 3 1 -em 0.1996 1 4 0 -em 0.1995 4 1 0 -em 0.1994 3 4 0 -em 0.1993 4 3 0 -en 0.3499 1 0.00117647058823529 -ej 0.35 1 4 -en 1.7 4 1.25</code></pre>
-<p>and the parameter file (from the software Cosi2) of Cosi</p>
+<p>and the parameter file (from the software Cosi2) of Cosi can be the <code>input.file</code>.</p>
 <pre><code># sample file
 # comments have #s in front of them
 # newlines don't matter.
@@ -293,7 +293,7 @@ pop_event bottleneck &quot;OoA bottleneck&quot; 1 3499 .085
 pop_event split &quot;out of Africa&quot; 5 1 3500
 
 pop_event change_size &quot;african pop size&quot; 5 17000 12500</code></pre>
-<p>can be the <code>input.file</code>. We save ms’ script in the “sample.ms.cmd” as the example input further illustration.</p>
+<p>We save ms’ script in the “sample.ms.cmd” as the example input further illustration.</p>
 <p>For the user who want to use this package to debug their simulation script, we also provide the string input option <code>input.cmd</code>, which allows to paste the command as string input to the plot function. <code>type</code> is to help <strong>PlotMS</strong> to recognize the <code>input.file</code>. Any dis-consistence between the <code>type</code> and the input would lead to the software crash or incorrect output model plot. Please check the supporting list to confirm your simulator is supported and find the right keyword for your simulator.</p>
 </div>
 <div id="scale-population-size-n4" class="section level3">
