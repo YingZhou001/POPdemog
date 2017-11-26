@@ -1,4 +1,4 @@
-# popdemog
+# Popdemog
 Demographic history visualization from coalescent simulation script
 
 Who to blame: Ying Zhou (yz001(at)uw.edu)
