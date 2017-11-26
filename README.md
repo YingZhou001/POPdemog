@@ -30,7 +30,7 @@ Usage:
 
 **Notes:**   
   + the python version should be the same as you use to install msprime.   
-  + The reference effective population size is set as 10,000.  
+  + The reference effective population size is set as `Ne=10,000`, for the followed plot, `N4=4*Ne=40,000`.  
   + The sample size for each subpopulation is set as 1 since it is irrelevant here.   
 
 
