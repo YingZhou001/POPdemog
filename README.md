@@ -3,19 +3,19 @@ Demographic history visualization from coalescent simulation script
 
 Who to blame: Ying Zhou (yz001(at)uw.edu)
 
-Copyright: 
+## Installation
 
-## Docs and materials
+  install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.1.tar.gz", repos = NULL)
+
+## Docs and materials: doc/
 
 Function manu: popdemog-manual.pdf
 
 Tutorial: popdemog-tutorial.html
 
-## Installation
-
-  install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.1.tar.gz", repos = NULL)
+An msprime example script: demo1.py 
    
-## Other tools
+## Tools: tools/
 
 ### msprime2ms.py
 Convert the demographic model specified in msprime to the ms-compatible format.
@@ -36,4 +36,4 @@ Usage:
 
 An example:
 
-python msprime2ms.py demo1.py population_configurations migration_matrix demographic_events > msprime.demo.cmd
+python tools/msprime2ms.py doc/demo1.py population_configurations migration_matrix demographic_events > msprime.demo.cmd
