@@ -1,15 +1,17 @@
 # popdemog
 Demographic history visualization from coalescent simulation script
 
-How to install and use this package: please see the tutorial file popdemog.html
-
 Who to blame: Ying Zhou (yz001(at)uw.edu)
 
-R function manu: popdemog-manual.pdf
+Copyright: 
 
-Tutorial: popdemog-tutorial.html (Open it with any browsers)
+##Docs:
 
-Install:
+Function manu: popdemog-manual.pdf
 
-  install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.0.tar.gz", repos = NULL)
+Tutorial: popdemog-tutorial.html
+
+##Installation:
+
+  install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.1.tar.gz", repos = NULL)
    
