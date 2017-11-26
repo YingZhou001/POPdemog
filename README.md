@@ -5,13 +5,13 @@ Who to blame: Ying Zhou (yz001(at)uw.edu)
 
 Copyright: 
 
-## Docs:
+## Docs and materials
 
 Function manu: popdemog-manual.pdf
 
 Tutorial: popdemog-tutorial.html
 
-## Installation:
+## Installation
 
   install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.1.tar.gz", repos = NULL)
    
