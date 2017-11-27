@@ -9,11 +9,7 @@ Who to blame: Ying Zhou (yz001(at)uw.edu)
 
 ## Docs and materials: doc/
 
-Function manu: popdemog-manual.pdf
-
-Tutorial: popdemog-tutorial.md
-
-An msprime example script: demo1.py 
+User can start with the [tutorial](doc/popdemog-tutorial.md), and check function details with the [manu](doc/popdemog-manual.pdf)
    
 ## Tools: tools/
 
