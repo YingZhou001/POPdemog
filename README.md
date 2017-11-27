@@ -11,7 +11,7 @@ Who to blame: Ying Zhou (yz001(at)uw.edu)
 
 Function manu: popdemog-manual.pdf
 
-Tutorial: popdemog-tutorial.html
+Tutorial: popdemog-tutorial.md
 
 An msprime example script: demo1.py 
    
