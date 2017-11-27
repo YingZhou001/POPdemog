@@ -1,0 +1,193 @@
+---
+title: 'Population demographic history visualization with R package: `popdemog`'
+author: "Ying Zhou"
+date: '`r Sys.Date()`'
+output:
+  word_document: default
+  pdf_document:
+    fig_crop: no
+    toc: yes
+  html_document:
+    toc: yes
+vignette: |
+  %\VignetteIndexEntry{Vignette Title} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+Demographic history tells about when and where a particular population come from, what is the genetic relationship to each other populations, and how the population size changes along the time.
+In population genetics studies, demograohic history could be either as the result of un-recorded demograohic inference from genetic data, or the assumption model to conduct simulations for possible hypothesis tests. 
+Both of them need a good way to represent the history, especially when multiple populations involves.
+
+The package *popdemog* is going to give a solution to represent population demographic history. 
+It is originally designed for the simulation software ms and aims to visualize the simulation script.
+Currently it can support many simulators' input, such as ms and msa [^1], msHot [^6], MaCS [^2], and Cosi [^3].
+msprime's simulation script[^7] can also be supported by this package since it can be easily translated into ms-compitable commands.
+More diverse inputs from simulation language will be supported in the future, please check the support list for update.
+
+In this package, we provide three easy-to-use functions: **PlotMS**, **PlotMMig**, and **PlotMig**.
+**PlotMS** is the main function to capture the demographic information from simulation script or simulation parameter file and output the tree structure of population evolution history and the arrows of migrations between lineages. 
+**PlotMMig** and **PlotMig** are designed to deal with complex migration events. 
+**PlotMMig** gives the overview of migrations over the time while **PlotMig** can only show migrations at one specified time point.
+However, **PlotMig** has more free variables to adjust and produce finer figure for migration presentation than **PlotMMig**.
+Besides, we have function **NRuler** to add population size ruler to the plot.
+
+To better understand the examples in this tutorial, user should have a little bit experience in simulation, a little knowledge about effective population size, and the basic skill to generate figures with R. 
+In this tutorial, we will use a demographic model from Cosi as an example to explore the power of *popdemog* in the population history representation. 
+We also attached abundant examples to help user to handle this package.
+
+Format rule in this tutorial: *package*, **function**, `option` & `code`.
+
+## Simulator supporting list
+
+ 
+
+|Simulator | Keyword | Notes|
+|:----------: | :----------: | :---------------------------------------|
+|Cosi | "cosi" | parameter file as the input|
+|ms  | "ms"  |   |
+|msa |       "msa" |  |    
+|msHot  |    "mshot"  | |  
+|msprime  |  "msprime" | need to convert to ms-compatile format as the input |
+|MaCS     |  "macs" | |
+|SCRM     |  "scrm" | |
+***
+ 
+
+## Install package *popdemog*
+Package *popdemog* can always be installed from the source file
+
+	install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.0.tar.gz", repos=NULL)
+
+then load it with
+	
+	library(popdemog)
+```{r, include=F}
+library(popdemog)
+```
+Now functions from this package are ready to use.
+
+## Plot demographic history with **PlotMS**
+
+The function **PlotMS** requires the `input.file` or `input.cmd`, and the `type` of the input to be specified. 
+
+###Script input: `input.file`, `input.cmd`, and `type`
+
+The `input.file` contains the all information for demographic history, it can be a copy of simulation script or the parameter file from simulation tools. 
+
+For example, the script of ms
+
+	./ms 1 1 -r 25 250001 -t 2.5 -I 4 50 50 50 60 -n 1 10 -n 2 10 -n 3 10 -n 4 10 -em 0 1 4 0.32 -em 0 4 1 0.32 -em 0 3 4 0.08 -em 0 4 3 0.08 -em 5e-04 2 1 2000 -em 6e-04 2 1 0 -ej 7e-04 2 4 -en 0.02 4 2.4 -en 0.035 1 0.77 -en 0.04 3 0.77 -en 0.1997 4 0.0125 -en 0.1998 3 0.00149253731343284 -en 0.1999 1 0.005 -ej 0.2 3 1 -em 0.1996 1 4 0 -em 0.1995 4 1 0 -em 0.1994 3 4 0 -em 0.1993 4 3 0 -en 0.3499 1 0.00117647058823529 -ej 0.35 1 4 -en 1.7 4 1.25
+
+
+and the parameter file (from the software Cosi2) of Cosi can be the `input.file`.
+
+	# sample file
+	# comments have #s in front of them
+	# newlines don't matter.
+	
+	#-- options that could be uncommented
+	#infinite_sites yes
+	#random_seed 12345   # Specifies a particular random number seed
+
+	# in bp.
+	length 250000
+
+	# per bp per generation
+	mutation_rate 1.5e-8
+
+	recomb_file model.out
+	gene_conversion_relative_rate 0.3
+
+	# population info
+
+	pop_define 1 european
+	pop_define 3 african-american
+	pop_define 4 asian
+	pop_define 5 african
+
+	#european
+	pop_size 1 100000
+	sample_size 1 50
+
+	#african american
+	pop_size 3 100000
+	sample_size 3 50
+
+	#asian
+	pop_size 4 100000
+	sample_size 4 50
+
+	#african
+	pop_size 5 100000
+	sample_size 5 60
+
+	pop_event migration_rate "afr->eur migration" 5 1 0. .000032
+	pop_event migration_rate "eur->afr migration" 1 5 0 .000032
+	pop_event migration_rate "afr->as migration" 5 4 0. .000008
+	pop_event migration_rate "as->afr migration" 4 5 0 .000008
+	pop_event admix "african american admix" 3 1 5. .2
+	pop_event split "african to aa" 5 3 7.0
+
+	pop_event change_size "agriculture - african" 5 200 24000
+	pop_event change_size "agriculture - european" 1 350 7700
+	pop_event change_size "agriculture - asian" 4 400 7700
+	pop_event bottleneck "african bottleneck" 5 1997 .008
+	pop_event bottleneck "asian bottleneck" 4 1998 .067
+	pop_event bottleneck "european bottleneck" 1 1999 .02
+
+	pop_event split "asian and european split" 1 4 2000
+	pop_event migration_rate "afr->eur migration" 5 1 1996 0
+	pop_event migration_rate "eur->afr migration" 1 5 1995 0
+	pop_event migration_rate "afr->as migration" 5 4 1994 0
+	pop_event migration_rate "as->afr migration" 4 5 1993 0
+
+	pop_event bottleneck "OoA bottleneck" 1 3499 .085
+	pop_event split "out of Africa" 5 1 3500
+
+	pop_event change_size "african pop size" 5 17000 12500
+
+We save  ms' script in the "sample.ms.cmd" as the example input further illustration.
+```{r, include=F}
+cat("./ms 1 1 -r 25 250001 -t 2.5 -I 4 50 50 50 60 -n 1 10 -n 2 10 -n 3 10 -n 4 10 -em 0 1 4 0.32 -em 0 4 1 0.32 -em 0 3 4 0.08 -em 0 4 3 0.08 -em 5e-04 2 1 2000 -em 6e-04 2 1 0 -ej 7e-04 2 4 -en 0.02 4 2.4 -en 0.035 1 0.77 -en 0.04 3 0.77 -en 0.1997 4 0.0125 -en 0.1998 3 0.00149253731343284 -en 0.1999 1 0.005 -ej 0.2 3 1 -em 0.1996 1 4 0 -em 0.1995 4 1 0 -em 0.1994 3 4 0 -em 0.1993 4 3 0 -en 0.3499 1 0.00117647058823529 -ej 0.35 1 4 -en 1.7 4 1.25", file="sample.ms.cmd")
+```
+For the user who want to use this package to debug their simulation script, we also provide the string input option `input.cmd`, which allows to paste the command as string input to the plot function. 
+`type` is to help **PlotMS** to recognize the `input.file`.
+Any dis-consistence between the `type` and the input would lead to the software crash or incorrect output model plot.
+Please check the supporting list to confirm your simulator is supported and find the right keyword for your simulator. 
+
+###Scale population size: `N4`
+Effective population size is a important parameter in simulations with ms-like script (msHot, scrm, and MaCS), it is used to scale the real population size and the time for demographic events.
+`N4` is remained here as the same meaning of $4N0$ in ms, which must be specified properly to give the right times for demographic events and the accurate sizes for populations.
+In two cases we do not need to care about this parameter: 1) we only want to output the topology plot with `pop.scale="topology"`; 2) the simulation script do not need to re-scale the population size and time, such as Cosi.
+ 
+###Ouput the demographic history
+
+Now we can generate our first plot of demographic history from the ms file "sample.ms.cmd" as follow, `N4` is 10000 in this case.
+	
+```{r, echo=T, message=F, warning=F, fig.width=5, fig.height=5,fig.cap="Figure 1: Raw plot of the simple history"}
+PlotMS(input.file="sample.ms.cmd", type="ms", N4=10000)
+```
+
+Usually, the quick plot is not satisfied. 
+We have enough options to customize the output graph.
+
+1.Adjust the lineage width. Lineage width directly reflects the population size. Here we use logarithm with base of 50 to resale the population size $N$ so as the width of lineage, following the function $log_{50}(N/N4+1)$
+
+	pop.scale="log", log.base =50
+2.Adjust the population position. A vector `inpos` is used to store the position of each population. `inpos[i]` for the `i`th population.
+
+	inpos=c(3,6,1,9)
+3.Add color to each lineage. `col.pop[i]` is stored the color for the $i$th population. The color of arrow is the same with the source population by default, or can be reset with 'col.arrow'.
+
+	col.pop=c("blue", "coral3", "gold3", "brown")
+4.Add population labels to each lineage. `pops[i]` is the name for the `i`th population.
+
+	pops=c("European", "African American", "Asian", "African")	
+add these settings to **PlotMS**, we have:
+```{r, echo=T, message=FALSE, warning=F, fig.width=5, fig.height=5, fig.cap="Figure 2: Adjusted plot of the simple history"}
+PlotMS(input.file="sample.ms.cmd", type="ms", N4=10000, pop.scale="log", 
+       log.base =50, inpos=c(3,6,1,9), 
+       col.pop=c("blue", "coral3", "gold3", "brown"), 
+       pops=c("European", "African American", "Asian", "African"))
+```
+
