@@ -549,9 +549,7 @@ title("Topology plot", cex=0.8);unlink("scrm.demo.cmd")
 ![Figure 13: Two types of the simple history plots (repeat of Figure 3 with SCRM input)](images/unnamed-chunk-16-1.png)
 
 ## Acknowlegements   
-
 Xiaowen Tian wrote the python script "msprime2ms.py".
-Blames & bug reported: Ying Zhou (yz001@uw.edu)
 
 ## References
 [^1]: Hudson, R. R. "Generating Samples under a Wright-Fisher Neutral Model of Genetic Variation." Bioinformatics 18.2 (2002): 337-38.   
