@@ -1,17 +1,4 @@
----
-title: 'Population demographic history visualization with R package: `popdemog`'
-author: "Ying Zhou"
-date: '2017-11-27'
-output:
-  word_document: default
-  pdf_document:
-    fig_crop: no
-    toc: yes
-  html_document:
-    toc: yes
-vignette: |
-  %\VignetteIndexEntry{Vignette Title} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
----
+# Population demographic history visualization with R package: `popdemog`
 
 ## Introduction
 Demographic history tells about when and where a particular population come from, what is the genetic relationship to each other populations, and how the population size changes along the time.
@@ -54,6 +41,7 @@ Format rule in this tutorial: *package*, **function**, `option` & `code`.
  
 
 ## Install package *popdemog*
+
 Package *popdemog* can always be installed from the source file
 
 	install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.0.tar.gz", repos=NULL)
@@ -68,7 +56,7 @@ Now functions from this package are ready to use.
 
 The function **PlotMS** requires the `input.file` or `input.cmd`, and the `type` of the input to be specified. 
 
-###Script input: `input.file`, `input.cmd`, and `type`
+### Script input: `input.file`, `input.cmd`, and `type`
 
 The `input.file` contains the all information for demographic history, it can be a copy of simulation script or the parameter file from simulation tools. 
 
@@ -151,12 +139,13 @@ For the user who want to use this package to debug their simulation script, we a
 Any dis-consistence between the `type` and the input would lead to the software crash or incorrect output model plot.
 Please check the supporting list to confirm your simulator is supported and find the right keyword for your simulator. 
 
-###Scale population size: `N4`
+### Scale population size: `N4`
+
 Effective population size is a important parameter in simulations with ms-like script (msHot, scrm, and MaCS), it is used to scale the real population size and the time for demographic events.
-`N4` is remained here as the same meaning of $4N0$ in ms, which must be specified properly to give the right times for demographic events and the accurate sizes for populations.
+`N4` is remained here as the same meaning of $4N0$  in ms, which must be specified properly to give the right times for demographic events and the accurate sizes for populations.
 In two cases we do not need to care about this parameter: 1) we only want to output the topology plot with `pop.scale="topology"`; 2) the simulation script do not need to re-scale the population size and time, such as Cosi.
  
-###Ouput the demographic history
+### Ouput the demographic history
 
 Now we can generate our first plot of demographic history from the ms file "sample.ms.cmd" as follow, `N4` is 10000 in this case.
 	
@@ -232,12 +221,14 @@ title("Topology plot", cex=0.8)
 ![Figure 3: Two types of the simple history plots](images/unnamed-chunk-5-1.png)
 
 ## Plot migrations
+
 When multiple migrations exist at a particular time point, arrows in **PlotMS** might cross with the population lineages and overlap with each other. 
 The migration events will be hard to read in this setting, so we use function **PlotMig** to output the migration pattern on the specified time.
 We also have **PlotMMig** to output the overview of all possible migration patterns among simulated populations. 
 Both of these two migration plot function are based on the output of function **PlotMS** with `plot=F`.
 
-###Using **PlotMMig** to creat an overview of migrations
+### Using **PlotMMig** to creat an overview of migrations
+
 **PlotMMig** will automatically output pattern and the duration of each migration. 
 Plot setting would be passed from function **PlotMS** to **PlotMMig** through the output list mig_par, more information will be found with `help(PlotMS)` in R. 
 
@@ -255,11 +246,12 @@ PlotMMig(demograph_out=out$demograph_out, mig_par=out$mig_par)
 
 ![Figure 4: Overview of all migrations](images/unnamed-chunk-6-1.png)
 
-###Using **PlotMig** to creat a fine migration plot
+### Using **PlotMig** to creat a fine migration plot
+
 **PlotMig** is designed for the need to show migration at the specified time. 
 We are going to plot all migrations at time 0.0005 (with `time_pt=0.0005`) and ignore the population size difference (with `pop.scale="topology"`).
 The time point stay the same scale with the setting of `time.scale`. 
-In this example, `time.scale="4Ne"` and it gives out the migration at $0.0005\times10000\times25=125$ years ago.
+In this example, `time.scale="4Ne"` and it gives out the migration at $`0.0005\times10000\times25=125`$ years ago.
 
 ```r
 out<-PlotMS(input.file="sample.ms.cmd", type="ms", N4=10000, plot.out=F, demo.out=T)
@@ -277,7 +269,7 @@ title(paste("Time: 0.0005 (",out$mig_par$time.scale, ")"))
 In the Figure 5, the variable `topology.scale=1.4` is used to re-scale the mono population size to 1.4 fold.
 The color and size of arrows can also be adjusted by the variable `col.arrow` and the `length.arrow`, please check the arguments with `help(PlotMig)` for more information.
 
-###Add migrations to maps
+### Add migrations to maps   
 Next, we are going to see an example of adding migration plot to a map.
 In this example, we need to install the package named `maps`
 	
@@ -321,9 +313,9 @@ title("Migrations on the simple history")
 
 ![Figure 6: Add migrations to a map](images/unnamed-chunk-8-1.png)
 
-##More examples
+## More examples
 
-###Modified Tennessen's model with Neanderthal introgression[^4]
+### Modified Tennessen's model with Neanderthal introgression[^4]
 
 ```r
 cat("macs 2025 15000000 -i 10 -r 3.0e-04 -t 0.00069 -T -I 4 10 1006 1008 1 0
@@ -356,7 +348,7 @@ title("Migrations at 1000 years ago");unlink("model-Tennessen.cmd")
 
 ![Figure 7: Modified Tennessen's model](images/unnamed-chunk-9-1.png)
 
-###Archaic introgrssion model [^5]
+### Archaic introgrssion model [^5]
 
 ```r
 cat("./ms 44 1 -r 20000 50000000 -t 30000 -I 6 20 20 1 1 1 1 -en 0 1 1
@@ -372,7 +364,7 @@ col.pop=c("brown", "blue", "forestgreen", rainbow(10)[6:9]));unlink("test.1.ms.c
 
 ![Figure 8: Archaic introgrssion model](images/unnamed-chunk-10-1.png)
 
-###Migration model from ms.
+### Migration model from ms.
 
 ```r
 cat("./ms 15 100 -t 3.0 -I 6 0 7 0 0 8 0 -m 1 2 2.5 -m 2 1 2.5 -m 2 3 2.5
@@ -384,7 +376,7 @@ col.arrow="black", length.arrow=0.1, lwd.arrow=2);unlink("test.2.ms.cmd")
 
 ![Figure 9: Migration](images/unnamed-chunk-11-1.png)
 
-###Ryan2009's model[^9]
+### Ryan2009's model[^9]
 
 ```r
 cat("./ms 1 1 -t 1.0 -I 3 10 10 10 -n 1 1.682020 -n 2 3.736830 -n 3 7.292050
@@ -400,7 +392,7 @@ pops=c("AFR", "EUR", "ESA"), col.pop=c("brown", "blue", "gold3"));unlink("Ryan20
 
 ![Figure 10: Ryan2009](images/unnamed-chunk-12-1.png)
 
-###Zigzag model
+### Zigzag model   
 
 ```r
 cat("ms 4 1 -t 7156.0000000 -r 2000.0000 10000000 -eN 0 5 -eG 0.000582262 1318.18
@@ -414,7 +406,7 @@ PlotMS(input.file = "zigzag.cmd", type="ms", N4=10000, time.scale="log10year");u
 
 ![Figure 11: zigzag model](images/unnamed-chunk-13-1.png)
 
-###Demographic plot from msprime's script
+### Demographic plot from msprime's script
 
 This package is able to extract the demographic information from msprime.
 For the ms-compatible command, user only need to set the 'type' to be "msprime" and copy the command line to input file; 
@@ -525,7 +517,7 @@ title("Migrations at 100 years ago");unlink("msprime.demo.cmd")
 
 ![Figure 12: Plot from msprime's input](images/unnamed-chunk-15-1.png)
 
-###Support for SCRM simulation script
+### Support for SCRM simulation script
 
 This package can also support the scrm simulation command[^10]. 
 Here we make an example simulation script that changing `-em 5e-04 2 1 2000 -em 6e-04 2 1 0` in the ms style command from the file "sample.ms.cmd" to `-eps 5e-04 2 1 0.8`.  
@@ -556,18 +548,19 @@ title("Topology plot", cex=0.8);unlink("scrm.demo.cmd")
 
 ![Figure 13: Two types of the simple history plots (repeat of Figure 3 with SCRM input)](images/unnamed-chunk-16-1.png)
 
-##Acknowlegements
+## Acknowlegements   
+
 Xiaowen Tian wrote the python script "msprime2ms.py".
+Blames & bug reported: Ying Zhou (yz001@uw.edu)
 
-
-##References
-[^2]: Chen, G. K., P. Marjoram, and J. D. Wall. "Fast and Flexible Simulation of DNA Sequence Data." Genome Research 19.1 (2008): 136-42.
-[^6]: Hellenthal, G., and M. Stephens. "MsHOT: Modifying Hudson's Ms Simulator to Incorporate Crossover and Gene Conversion Hotspots." Bioinformatics 23.4 (2006): 520-21.
-[^1]: Hudson, R. R. "Generating Samples under a Wright-Fisher Neutral Model of Genetic Variation." Bioinformatics 18.2 (2002): 337-38.
-[^5]: Moorjani, Priya, et al. “A Genetic Method for Dating Ancient Genomes Provides a Direct Estimate of Human Generation Interval in the Last 45,000 Years.” Proceedings of the National Academy of Sciences, vol. 113, no. 20, Feb. 2016, pp. 5652–5657., doi:10.1073/pnas.1514696113.
-[^3]: Shlyakhter, Ilya, Pardis C. Sabeti, and Stephen F. Schaffner. "Cosi2: An Efficient Simulator of Exact and Approximate Coalescent with Selection | Bioinformatics | Oxford Academic." OUP Academic. Oxford University Press, 22 Aug. 2014.
-[^4]: Vernot, B., S. Tucci, J. Kelso, J. G. Schraiber, A. B. Wolf, R. M. Gittelman, M. Dannemann, S. Grote, R. C. Mccoy, H. Norton, L. B. Scheinfeldt, D. A. Merriwether, G. Koki, J. S. Friedlaender, J. Wakefield, S. Paabo, and J. M. Akey. "Excavating Neandertal and Denisovan DNA from the Genomes of Melanesian Individuals." Science 352.6282 (2016): 235-39.
-[^7]: Jerome Kelleher, Alison M Etheridge and Gilean McVean (2016), Efficient Coalescent Simulation and Genealogical Analysis for Large Sample Sizes, PLoS Comput Biol 12(5): e1004842. doi: 10.1371/journal.pcbi.1004842
-[^8]: https://msprime.readthedocs.io/en/latest/tutorial.html#demography
-[^9]: Gutenkunst RN, Hernandez RD, Williamson SH, Bustamante CD (2009) Inferring the Joint Demographic History of Multiple Populations from Multidimensional SNP Frequency Data. PLOS Genetics 5(10): e1000695. https://doi.org/10.1371/journal.pgen.1000695
-[^10]: Paul R. Staab, Sha Zhu, Dirk Metzler and Gerton Lunter. scrm: efficiently simulating long sequences using the approximated coalescent with recombination. Bioinformatics (2015) 31 (10): 1680-1682. doi:10.1093/bioinformatics/btu861.
+## References
+[^1]: Hudson, R. R. "Generating Samples under a Wright-Fisher Neutral Model of Genetic Variation." Bioinformatics 18.2 (2002): 337-38.   
+[^2]: Chen, G. K., P. Marjoram, and J. D. Wall. "Fast and Flexible Simulation of DNA Sequence Data." Genome Research 19.1 (2008): 136-42.   
+[^3]: Shlyakhter, Ilya, Pardis C. Sabeti, and Stephen F. Schaffner. "Cosi2: An Efficient Simulator of Exact and Approximate Coalescent with Selection | Bioinformatics | Oxford Academic." OUP Academic. Oxford University Press, 22 Aug. 2014.   
+[^4]: Vernot, B., S. Tucci, J. Kelso, J. G. Schraiber, A. B. Wolf, R. M. Gittelman, M. Dannemann, S. Grote, R. C. Mccoy, H. Norton, L. B. Scheinfeldt, D. A. Merriwether, G. Koki, J. S. Friedlaender, J. Wakefield, S. Paabo, and J. M. Akey. "Excavating Neandertal and Denisovan DNA from the Genomes of Melanesian Individuals." Science 352.6282 (2016): 235-39.   
+[^5]: Moorjani, Priya, et al. “A Genetic Method for Dating Ancient Genomes Provides a Direct Estimate of Human Generation Interval in the Last 45,000 Years.” Proceedings of the National Academy of Sciences, vol. 113, no. 20, Feb. 2016, pp. 5652–5657., doi:10.1073/pnas.1514696113.   
+[^6]: Hellenthal, G., and M. Stephens. "MsHOT: Modifying Hudson's Ms Simulator to Incorporate Crossover and Gene Conversion Hotspots." Bioinformatics 23.4 (2006): 520-21.   
+[^7]: Jerome Kelleher, Alison M Etheridge and Gilean McVean (2016), Efficient Coalescent Simulation and Genealogical Analysis for Large Sample Sizes, PLoS Comput Biol 12(5): e1004842. doi: 10.1371/journal.pcbi.1004842   
+[^8]: https://msprime.readthedocs.io/en/latest/tutorial.html#demography   
+[^9]: Gutenkunst RN, Hernandez RD, Williamson SH, Bustamante CD (2009) Inferring the Joint Demographic History of Multiple Populations from Multidimensional SNP Frequency Data. PLOS Genetics 5(10): e1000695. https://doi.org/10.1371/journal.pgen.1000695   
+[^10]: Paul R. Staab, Sha Zhu, Dirk Metzler and Gerton Lunter. scrm: efficiently simulating long sequences using the approximated coalescent with recombination. Bioinformatics (2015) 31 (10): 1680-1682. doi:10.1093/bioinformatics/btu861.   
