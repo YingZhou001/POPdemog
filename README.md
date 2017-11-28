@@ -9,7 +9,7 @@ Who to blame: Ying Zhou (yz001(at)uw(dot)edu)
 
 ## Docs and materials: doc/
 
-User can start with the [tutorial](doc/popdemog-tutorial.md), and check function details with the [manual](doc/popdemog-manual.pdf)
+User can start with the [tutorial](doc/POPdemog-tutorial.md), and check function details with the [manual](doc/POPdemog-manual.pdf)
    
 ## Tools: tools/
 
