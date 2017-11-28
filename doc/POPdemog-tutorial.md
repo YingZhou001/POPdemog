@@ -3,7 +3,7 @@
 ## Content   
 -   [Introduction](#introduction)
 -   [Simulator supporting list](#simulator-supporting-list)
--   [Install package *POPdemog*](#install-package-POPdemog)
+-   [Install package *POPdemog* ](#install-package-popdemog)
 -   [Plot demographic history with *PlotMS*](#plot-demographic-history-with-plotms)
     -   [Script input: `input.file`, `input.cmd`, and `type`](#script-input-inputfile-inputcmd-and-type)   
     -   [Scale population size: `N4`](#scale-population-size-n4)
@@ -67,11 +67,11 @@ Format rule in this tutorial:*function*, `option` & `code`.
 
 [[Top]](#content)
 
-## Install package *POPdemog*
+## Install package *POPdemog*   
 
 Package *POPdemog* can always be installed from the source file
 
-	install.packages("https://github.com/YingZhou001/popdemog/raw/master/popdemog_1.0.tar.gz", repos=NULL)
+	install.packages("https://github.com/YingZhou001/popdemog/raw/master/POPdemog_1.1.tar.gz", repos=NULL)
 
 then load it with
 	
