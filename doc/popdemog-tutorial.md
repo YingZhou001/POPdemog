@@ -1,4 +1,27 @@
-# Population demographic history visualization with R package: `popdemog`
+# Population demographic history visualization with R package: `popdemog`   
+
+## Content   
+-   [Introduction](#introduction)
+-   [Simulator supporting list](#simulator-supporting-list)
+-   [Install package *popdemog*](#install-package-popdemog)
+-   [Plot demographic history with **PlotMS**](#plot-demographic-history-with-plotms)
+    -   [Script input: `input.file`, `input.cmd`, and `type`](#script-input-inputfile-inputcmd-and-type)   
+    -   [Scale population size: `N4`](#scale-population-size-n4)
+    -   [Ouput the demographic history](#ouput-the-demographic-history)
+-   [Plot migrations](#plot-migrations)
+    -   [Using **PlotMMig** to creat an overview of migrations](#using-plotmmig-to-creat-an-overview-of-migrations)
+    -   [Using **PlotMig** to creat a fine migration plot](#using-plotmig-to-creat-a-fine-migration-plot)
+    -   [Add migrations to maps](#add-migrations-to-maps)
+-   [More examples](#more-examples)
+    -   [Modified Tennessen's model with Neanderthal introgression](#modified-tennessens-model-with-neanderthal-introgression4)
+    -   [Archaic introgrssion model](#archaic-introgrssion-model-5)
+    -   [Migration model from ms](#migration-model-from-ms)
+    -   [Ryan2009's model](#ryan2009s-model9)
+    -   [Zigzag model](#zigzag-model)
+    -   [Demographic plot from msprime's script](#demographic-plot-from-msprimes-script)
+    -   [Support for SCRM simulation script](#support-for-scrm-simulation-script)
+-   [Acknowlegements](#acknowlegements)
+-   [References](#references)
 
 ## Introduction
 Demographic history tells about when and where a particular population come from, what is the genetic relationship to each other populations, and how the population size changes along the time.
@@ -23,6 +46,9 @@ In this tutorial, we will use a demographic model from Cosi as an example to exp
 We also attached abundant examples to help user to handle this package.
 
 Format rule in this tutorial: *package*, **function**, `option` & `code`.
+  
+[[Top]](#content)
+
 
 ## Simulator supporting list
 
@@ -38,7 +64,8 @@ Format rule in this tutorial: *package*, **function**, `option` & `code`.
 |MaCS     |  "macs" | |
 |SCRM     |  "scrm" | |
 ***
- 
+
+[[Top]](#content)
 
 ## Install package *popdemog*
 
@@ -51,6 +78,8 @@ then load it with
 	library(popdemog)
 
 Now functions from this package are ready to use.
+
+[[Top]](#content)
 
 ## Plot demographic history with **PlotMS**
 
@@ -139,11 +168,15 @@ For the user who want to use this package to debug their simulation script, we a
 Any dis-consistence between the `type` and the input would lead to the software crash or incorrect output model plot.
 Please check the supporting list to confirm your simulator is supported and find the right keyword for your simulator. 
 
+[[Top]](#content)
+
 ### Scale population size: `N4`
 
 Effective population size is a important parameter in simulations with ms-like script (msHot, scrm, and MaCS), it is used to scale the real population size and the time for demographic events.
 `N4` is remained here as the same meaning of $4N0$  in ms, which must be specified properly to give the right times for demographic events and the accurate sizes for populations.
 In two cases we do not need to care about this parameter: 1) we only want to output the topology plot with `pop.scale="topology"`; 2) the simulation script do not need to re-scale the population size and time, such as Cosi.
+
+[[Top]](#content)
  
 ### Ouput the demographic history
 
@@ -220,6 +253,8 @@ title("Topology plot", cex=0.8)
 
 ![Figure 3: Two types of the simple history plots](images/unnamed-chunk-5-1.png)
 
+[[Top]](#content)
+
 ## Plot migrations
 
 When multiple migrations exist at a particular time point, arrows in **PlotMS** might cross with the population lineages and overlap with each other. 
@@ -246,6 +281,8 @@ PlotMMig(demograph_out=out$demograph_out, mig_par=out$mig_par)
 
 ![Figure 4: Overview of all migrations](images/unnamed-chunk-6-1.png)
 
+[[Top]](#content)
+
 ### Using **PlotMig** to creat a fine migration plot
 
 **PlotMig** is designed for the need to show migration at the specified time. 
@@ -268,6 +305,8 @@ title(paste("Time: 0.0005 (",out$mig_par$time.scale, ")"))
 
 In the Figure 5, the variable `topology.scale=1.4` is used to re-scale the mono population size to 1.4 fold.
 The color and size of arrows can also be adjusted by the variable `col.arrow` and the `length.arrow`, please check the arguments with `help(PlotMig)` for more information.
+
+[[Top]](#content)
 
 ### Add migrations to maps   
 Next, we are going to see an example of adding migration plot to a map.
@@ -313,6 +352,8 @@ title("Migrations on the simple history")
 
 ![Figure 6: Add migrations to a map](images/unnamed-chunk-8-1.png)
 
+[[Top]](#content)
+
 ## More examples
 
 ### Modified Tennessen's model with Neanderthal introgression[^4]
@@ -348,6 +389,8 @@ title("Migrations at 1000 years ago");unlink("model-Tennessen.cmd")
 
 ![Figure 7: Modified Tennessen's model](images/unnamed-chunk-9-1.png)
 
+[[Top]](#content)
+
 ### Archaic introgrssion model [^5]
 
 ```r
@@ -364,7 +407,9 @@ col.pop=c("brown", "blue", "forestgreen", rainbow(10)[6:9]));unlink("test.1.ms.c
 
 ![Figure 8: Archaic introgrssion model](images/unnamed-chunk-10-1.png)
 
-### Migration model from ms.
+[[Top]](#content)
+
+### Migration model from ms
 
 ```r
 cat("./ms 15 100 -t 3.0 -I 6 0 7 0 0 8 0 -m 1 2 2.5 -m 2 1 2.5 -m 2 3 2.5
@@ -375,6 +420,8 @@ col.arrow="black", length.arrow=0.1, lwd.arrow=2);unlink("test.2.ms.cmd")
 ```
 
 ![Figure 9: Migration](images/unnamed-chunk-11-1.png)
+
+[[Top]](#content)
 
 ### Ryan2009's model[^9]
 
@@ -392,6 +439,8 @@ pops=c("AFR", "EUR", "ESA"), col.pop=c("brown", "blue", "gold3"));unlink("Ryan20
 
 ![Figure 10: Ryan2009](images/unnamed-chunk-12-1.png)
 
+[[Top]](#content)
+
 ### Zigzag model   
 
 ```r
@@ -405,6 +454,8 @@ PlotMS(input.file = "zigzag.cmd", type="ms", N4=10000, time.scale="log10year");u
 ```
 
 ![Figure 11: zigzag model](images/unnamed-chunk-13-1.png)
+
+[[Top]](#content)
 
 ### Demographic plot from msprime's script
 
@@ -517,6 +568,8 @@ title("Migrations at 100 years ago");unlink("msprime.demo.cmd")
 
 ![Figure 12: Plot from msprime's input](images/unnamed-chunk-15-1.png)
 
+[[Top]](#content)
+
 ### Support for SCRM simulation script
 
 This package can also support the scrm simulation command[^10]. 
@@ -548,8 +601,12 @@ title("Topology plot", cex=0.8);unlink("scrm.demo.cmd")
 
 ![Figure 13: Two types of the simple history plots (repeat of Figure 3 with SCRM input)](images/unnamed-chunk-16-1.png)
 
+[[Top]](#content)
+
 ## Acknowlegements   
 Xiaowen Tian wrote the python script "msprime2ms.py".
+
+[[Top]](#content)
 
 ## References
 [^1]: Hudson, R. R. "Generating Samples under a Wright-Fisher Neutral Model of Genetic Variation." Bioinformatics 18.2 (2002): 337-38.   
@@ -562,3 +619,5 @@ Xiaowen Tian wrote the python script "msprime2ms.py".
 [^8]: https://msprime.readthedocs.io/en/latest/tutorial.html#demography   
 [^9]: Gutenkunst RN, Hernandez RD, Williamson SH, Bustamante CD (2009) Inferring the Joint Demographic History of Multiple Populations from Multidimensional SNP Frequency Data. PLOS Genetics 5(10): e1000695. https://doi.org/10.1371/journal.pgen.1000695   
 [^10]: Paul R. Staab, Sha Zhu, Dirk Metzler and Gerton Lunter. scrm: efficiently simulating long sequences using the approximated coalescent with recombination. Bioinformatics (2015) 31 (10): 1680-1682. doi:10.1093/bioinformatics/btu861.   
+
+[[Top]](#content)
