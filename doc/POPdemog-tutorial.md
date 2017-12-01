@@ -63,7 +63,6 @@ Format rule in this tutorial:*function*, `option` & `code`.
 |msprime  |  "msprime" | need to convert to ms-compatile format as the input |
 |MaCS     |  "macs" | |
 |SCRM     |  "scrm" | |
-**
 
 [[Top]](#content)
 
