@@ -3,7 +3,7 @@
 ## Content   
 -   [Introduction](#introduction)
 -   [Simulator supporting list](#simulator-supporting-list)
--   [Install package *POPdemog* ](#install-package-popdemog)
+-   [Install package POPdemog ](#install-package-popdemog)
 -   [Plot demographic history with *PlotMS*](#plot-demographic-history-with-plotms)
     -   [Script input: `input.file`, `input.cmd`, and `type`](#script-input-inputfile-inputcmd-and-type)   
     -   [Scale population size: `N4`](#scale-population-size-n4)
@@ -28,7 +28,7 @@ Demographic history tells about when and where a particular population come from
 In population genetics studies, demograohic history could be either as the result of un-recorded demograohic inference from genetic data, or the assumption model to conduct simulations for possible hypothesis tests. 
 Both of them need a good way to represent the history, especially when multiple populations involves.
 
-The package *POPdemog* is going to give a solution to represent population demographic history. 
+The package POPdemog is going to give a solution to represent population demographic history. 
 It is originally designed for the simulation software ms and aims to visualize the simulation script.
 Currently it can support many simulators' input, such as ms and msa [^1], msHot [^6], MaCS [^2], and Cosi [^3].
 msprime's simulation script[^7] can also be supported by this package since it can be easily translated into ms-compitable commands.
@@ -66,9 +66,9 @@ Format rule in this tutorial:*function*, `option` & `code`.
 
 [[Top]](#content)
 
-## Install package *POPdemog*   
+## Install package POPdemog   
 
-Package *POPdemog* can always be installed from the source file
+Package POPdemog can always be installed from the source file
 
 	install.packages("https://github.com/YingZhou001/popdemog/raw/master/POPdemog_1.1.tar.gz", repos=NULL)
 
