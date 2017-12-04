@@ -42,7 +42,7 @@ However, *PlotMig* has more free variables to adjust and produce finer figure fo
 Besides, we have function *NRuler* to add population size ruler to the plot.
 
 To better understand the examples in this tutorial, user should have a little bit experience in simulation, a little knowledge about effective population size, and the basic skill to generate figures with R. 
-In this tutorial, we will use a demographic model from Cosi as an example to explore the power of *POPdemog* in the population history representation. 
+In this tutorial, we will use a demographic model from Cosi as an example to explore the power of POPdemog in the population history representation. 
 We also attached abundant examples to help user to handle this package.
 
 Format rule in this tutorial:*function*, `option` & `code`.
