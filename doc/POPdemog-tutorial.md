@@ -70,7 +70,7 @@ Format rule in this tutorial:*function*, `option` & `code`.
 
 Package POPdemog can always be installed from the source file
 
-	install.packages("https://github.com/YingZhou001/popdemog/raw/master/POPdemog_1.1.tar.gz", repos=NULL)
+	install.packages("https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.1.tar.gz", repos=NULL)
 
 then load it with
 	
