@@ -5,7 +5,7 @@ Who to blame: Ying Zhou (yz001(at)uw(dot)edu)
 
 ## Installation
 
-  install.packages("https://github.com/YingZhou001/popdemog/raw/master/POPdemog_1.1.tar.gz", repos = NULL)
+  install.packages("https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.1.tar.gz", repos = NULL)
 
 ## Docs and materials: doc/
 
