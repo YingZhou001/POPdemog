@@ -4,8 +4,20 @@ Demographic history visualization from coalescent simulation script
 Who to blame: Ying Zhou (yz001(at)uw(dot)edu)
 
 ## Installation
+We are working on submitting this package to the CRAN.
+Before that, user can [download](https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz) and then install it as
 
-  install.packages("https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.1.tar.gz", repos = NULL)
+        install.package("POPdemog_1.0.3.tar.gz", repos=NULL, source=TRUE)
+
+For R version >= 3.3.0, package POPdemog can be installed from the source file
+
+        install.packages("https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz", repos=NULL)
+
+then loaded it with
+
+        library(POPdemog)
+
+**Notice:** Safari may automatically unzip the gz file when download the package source, please check this [page](https://apple.stackexchange.com/questions/961/how-to-stop-safari-from-unzipping-files-after-download) for setting how to download without unzipping files.
 
 ## Docs and materials: doc/
 
