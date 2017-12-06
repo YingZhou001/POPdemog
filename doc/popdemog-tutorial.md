@@ -1,28 +1,38 @@
 # Population demographic history visualization with R package: POPdemog
 
+
+
 Content
 -------
 
 -   [Introduction](#introduction)
 -   [Supported Simulators](#supported-simulators)
 -   [Installing the package POPdemog](#installing-the-package-popdemog)
--   [Plotting demographic history with *PlotMS()*](#plotting-demographic-history-with-plotms)
-    -   [Script input: `input.file`, `input.cmd`, and `type`](#script-input-input.file-input.cmd-and-type)
+-   [Plotting demographic history with
+    *PlotMS()*](#plotting-demographic-history-with-plotms)
+    -   [Script input: `input.file`, `input.cmd`, and
+        `type`](#script-input-input.file-input.cmd-and-type)
     -   [Scale population size: `N4`](#scale-population-size-n4)
     -   [Ouput the demographic history](#ouput-the-demographic-history)
 -   [Plotting migrations](#plotting-migrations)
-    -   [Using *PlotMMig()* to create an overview of migrations](#using-plotmmig-to-create-an-overview-of-migrations)
-    -   [Using *PlotMig()* to create a fine-scale migration plot](#using-plotmig-to-create-a-fine-scale-migration-plot)
+    -   [Using *PlotMMig()* to create an overview of
+        migrations](#using-plotmmig-to-create-an-overview-of-migrations)
+    -   [Using *PlotMig()* to create a fine-scale migration
+        plot](#using-plotmig-to-create-a-fine-scale-migration-plot)
     -   [Adding migrations to maps](#adding-migrations-to-maps)
 -   [More examples](#more-examples)
-    -   [Modified Tennessen model with Neanderthal introgression](#modified-tennessen-model-with-neanderthal-introgression4)
-    -   [Customizing the circle sizes in migration plots](#customizing-the-circle-sizes-in-migration-plots)
+    -   [Modified Tennessen model with Neanderthal
+        introgression](#modified-tennessen-model-with-neanderthal-introgression4)
+    -   [Customizing the circle sizes in migration
+        plots](#customizing-the-circle-sizes-in-migration-plots)
     -   [Archaic introgrssion model](#archaic-introgrssion-model-5)
     -   [Migration model from ms](#migration-model-from-ms)
     -   [Ryan2009 model](#ryan2009-model9)
     -   [Zigzag model](#zigzag-model)
-    -   [Demographic plot from msprime's script](#demographic-plot-from-msprimes-script)
-    -   [Support for SCRM simulation script](#support-for-scrm-simulation-script)
+    -   [Demographic plot from msprime's
+        script](#demographic-plot-from-msprimes-script)
+    -   [Support for SCRM simulation
+        script](#support-for-scrm-simulation-script)
 -   [Acknowledgements](#acknowledgements)
 -   [References](#references)
 
@@ -38,13 +48,13 @@ demographic history from the description of the demographic model used
 as input to population genetic simulator programs, such as ms and msa
 [1], msHot [2], MaCS [3], and Cosi [4]. msprime's simulation script[5]
 is also be supported by this package since it can be translated into
-ms-compitable commands. We plan to support additional simulators in the
+ms-compatible commands. We plan to support additional simulators in the
 future. Please check the [support list](#supported-simulators) for
 update.
 
 The POPdemog package provides three easy-to-use functions: *PlotMS()*,
 *PlotMMig()*, and *PlotMig()*.  *PlotMS()* is the main function. It
-converts the demographic information from simulation scripit or
+converts the demographic information from simulation script or
 simulation parameter file into a plot of the tree structure of
 population evolution history and the arrows of migrations between
 lineages.  The *PlotMMig()* and *PlotMig()* functions are designed to
@@ -61,7 +71,7 @@ of POPdemog to visualize population history. We also attached abundant
 examples to help user to handle this package.
 
 In this tutorial, function names are italicized \[*function()*\], and
-parameters and code is presented in monospaced font \[`option` &
+parameters and code is presented in mono-spaced font \[`option` &
 `code`\].
 
 **Notice:** Currently, this package does not check the simulation
@@ -105,7 +115,7 @@ Supported Simulators
 <tr class="odd">
 <td align="center">msprime</td>
 <td align="center">&quot;msprime&quot;</td>
-<td align="left">Must first convert to ms-compatile input format</td>
+<td align="left">Must first convert to ms-compatible input format</td>
 </tr>
 <tr class="even">
 <td align="center">MaCS</td>
@@ -127,15 +137,15 @@ Installing the package POPdemog
 
 We are working on submitting this package to the CRAN. Before that, user
 can
-[download](https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.1.tar.gz)
+[download](https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz)
 and then install it as
 
-    install.package("POPdemog_1.1.tar.gz", repos=NULL, source=TRUE)
+    install.package("POPdemog_1.0.3.tar.gz", repos=NULL, source=TRUE)
 
 For R version &gt;= 3.3.0, package POPdemog can be installed from the
 source file
 
-    install.packages("https://github.com/YingZhou001/popdemog/raw/master/POPdemog_1.1.tar.gz", repos=NULL)
+    install.packages("https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz", repos=NULL)
 
 then loaded it with
 
@@ -265,13 +275,14 @@ file "sample.ms.cmd", `N4` set to 10000 in this case.
 
     PlotMS(input.file="sample.ms.cmd", type="ms", N4=10000)
 
-![Figure 1: Basic plot](images/unnamed-chunk-3-1.png)
+![Figure 1: Basic
+plot](images/unnamed-chunk-3-1.png)
 
 This basic plot is usually not satisfactory. However, there are many
 options which will allow us to customize the output figure.
 
 1.Adjust the lineage width with the `size.scale` parameter. Lineage
-width represemts the population size. Here we use logarithm function
+width represents the population size. Here we use logarithm function
 with a base of 50 to resale the population size *N* so that the width of
 lineage is *l**o**g*<sub>50</sub>(*N*/*N*4 + 1) in the plot.
 
@@ -301,7 +312,9 @@ Adding these settings to *PlotMS()*, we have:
            col.pop=c("blue", "coral3", "gold3", "brown"), 
            pops=c("European", "African American", "Asian", "African"))
 
-![Figure 2: Adding color, population labels, and population names to the basic plot](images/unnamed-chunk-4-1.png)
+![Figure 2: Adding color, population labels, and population names to the
+basic
+plot](images/unnamed-chunk-4-1.png)
 
 If the recent events should be more interesting than ancient ones, we
 can zoom in with
@@ -323,7 +336,7 @@ region.
 
     cex.lab=0.6
     cex.axis=0.6
-    length.arrow=0.05
+    length.arrowtip=0.05
 
 If there are too many background migrations, these events can be masked
 by
@@ -337,17 +350,18 @@ Then we have the demographic figures with:
            size.scale="log", log.base =50, inpos=c(3,6,1,9), 
            col.pop=c("blue", "coral3", "gold3", "brown"), 
            pops=c("European", "African American", "Asian", "African"), 
-           time.scale="log10year", cex.lab=0.6, cex.axis=0.6, length.arrow=0.05, m.adjust=0.05)
+           time.scale="log10year", cex.lab=0.6, cex.axis=0.6, length.arrowtip=0.05, m.adjust=0.05)
     title("Zoom in recent events", cex=0.8)
     NRuler("topleft", Nsize=c(1e3, 1e5), Nlab=c("1e3","1e5"), N4=10000, size.scale="log",log.base=50, lwd=1, cex=0.6)
     PlotMS(input.file="sample.ms.cmd", type="ms", N4=10000, 
            size.scale="topology", inpos=c(3,6,1,9), 
            col.pop=c("blue", "coral3", "gold3", "brown"), 
            pops=c("European", "African American", "Asian", "African"), 
-           cex.lab=0.6, cex.axis=0.6, length.arrow=0.05, ylab="Time before present", m.adjust=0.05)
+           cex.lab=0.6, cex.axis=0.6, length.arrowtip=0.05, ylab="Time before present", m.adjust=0.05)
     title("Topology plot", cex=0.8)
 
-![Figure 3: Two types of demography plots](images/unnamed-chunk-5-1.png)
+![Figure 3: Two types of demography
+plots](images/unnamed-chunk-5-1.png)
 
 [\[top\]](#content)
 
@@ -379,11 +393,12 @@ command in R.
             col.pop=c("blue", "coral3", "gold3", "brown"), 
             pops=c("European", "African American", "Asian", "African"), 
             plot.out=F, demo.out=T,
-            cex.lab=0.5, cex.axis=0.6, length.arrow=0.05)
+            cex.lab=0.5, cex.axis=0.6, length.arrowtip=0.05)
     #plot the overview of all migrations
     PlotMMig(demograph_out=out$demograph_out, mig_par=out$mig_par)
 
-![Figure 4: Overview of all migrations](images/unnamed-chunk-6-1.png)
+![Figure 4: Overview of all
+migrations](images/unnamed-chunk-6-1.png)
 
 [\[top\]](#content)
 
@@ -404,10 +419,11 @@ the setting of `time.scale`.
            pch=20, col=c("blue", "coral3", "gold3", "brown"), bty="n")
     title(paste("Time: 125 years ago"))
 
-![Figure 5: Migration at one time](images/unnamed-chunk-7-1.png)
+![Figure 5: Migration at one
+time](images/unnamed-chunk-7-1.png)
 
 In the Figure 5, the color and size of arrows can also be customized by
-the variable `col.arrow` and the `length.arrow`, please check the
+the variable `col.arrow` and the `length.arrowtip`, please check the
 arguments with `help(PlotMig)` for more information.
 
 [\[top\]](#content)
@@ -422,7 +438,7 @@ In this example, we need to install the package named `maps`
 then load the map and save the latitude and longitude for each
 population in a matrix as `inp.map.pos`. We also need to set `add=T` to
 let *PlotMS()* add plot to the backgrounds. We set `m.adjust=0.01` to
-avoid minor migrations and set `topology.scale=10` to make each
+avoid minor migrations and set `toposize.scale=10` to make each
 population circle large enough to be easily seen.
 
     library(maps)
@@ -446,11 +462,12 @@ population circle large enough to be easily seen.
     for(i in times){
     PlotMig(time_pt=i, demograph_out=out$demograph_out, mig_par=out$mig_par, 
             size.scale="topology", col.pop=c("blue", "coral3", "gold3", "brown"), 
-            topology.scale=10, add=T, map.pos=inp.map.pos, length.arrow=0.1, m.adjust=0.01, 
+            toposize.scale=10, add=T, map.pos=inp.map.pos, length.arrowtip=0.1, m.adjust=0.01, 
             col.arrow=c("blue", "coral3", "gold3", "brown"));
     }
 
-![Figure 6: Add migrations to a map](images/unnamed-chunk-8-1.png)
+![Figure 6: Add migrations to a
+map](images/unnamed-chunk-8-1.png)
 
 [\[top\]](#content)
 
@@ -475,7 +492,7 @@ More examples
     PlotMS(input.file="model-Tennessen.cmd", type="macs", N4=30000, 
            size.scale="log", log.base  =50, inpos=c(1,4,7,9), time.scale="log10year", 
            col.pop=c("brown", "blue", "gold3", "forestgreen"), 
-           pops=c("AFR", "EUR", "ASIA", "ARC"), cex.lab=1, cex.axis=1, xlab="", length.arrow=0.1)
+           pops=c("AFR", "EUR", "ASIA", "ARC"), cex.lab=1, cex.axis=1, xlab="", length.arrowtip=0.1)
     title("Demographic histoy")
     PlotMS(input.file="model-Tennessen.cmd", type="macs", N4=30000,
            time.scale="log10year", plot.out=F, demo.out=T)->out;
@@ -486,35 +503,32 @@ More examples
            col=c("brown", "blue", "gold3", "forestgreen"), pch=20, bty="n")
     title("Migrations at 1000 years ago");
 
-![Figure 7: Modified Tennessen's model](images/unnamed-chunk-9-1.png)
-
-[\[top\]](#content)
-
-### Customizing the circle sizes in migration plots 
-
-The size of circles in the *PlotMig* plot can be customized by the parameter
+![Figure 7: Modified Tennessen's
+model](images/unnamed-chunk-9-1.png)
+\#\#\# Customizing the circle sizes in migration plots The size of
+circle in the *PlotMig* plot can be customized by the parameter
 `size.scale`. When using `size.scale="log"`, circle size is a
-logarithmical function of population size; when using
-`size.scale="topology"`, populations will be represetned by the circles
-in the same size, and the size can be scaled with the parameter
-`topology.scale`.
+logarithmic function of the population size; when using
+`size.scale="topology"`, all populations will be represented by the
+circles of the same size, and the size can be scaled by the parameter
+`toposize.scale`.
 
     par(mfrow=c(1,3))
     PlotMig(time_pt=3, demograph_out=out$demograph_out, mig_par=out$mig_par, 
         col.pop=c("brown", "blue", "gold3", "forestgreen"), 
-        size.scale="log", log.base=100, length.arrow=0.1);
+        size.scale="log", log.base=100, length.arrowtip=0.1);
     title("size.scale=\"log\", log.base=100")
     PlotMig(time_pt=3, demograph_out=out$demograph_out, mig_par=out$mig_par, 
         col.pop=c("brown", "blue", "gold3", "forestgreen"), 
-        size.scale="topology", topology.scale=0.5, );
-    title("size.scale=\"topology\", topology.scale=1", length.arrow=0.1)
+        size.scale="topology", toposize.scale=0.5, );
+    title("size.scale=\"topology\", toposize.scale=1", length.arrowtip=0.1)
     PlotMig(time_pt=3, demograph_out=out$demograph_out, mig_par=out$mig_par, 
         col.pop=c("brown", "blue", "gold3", "forestgreen"), 
-        size.scale="topology", topology.scale=2, length.arrow=0.1);
-    title("size.scale=\"topology\", topology.scale=2");unlink("model-Tennessen.cmd")
+        size.scale="topology", toposize.scale=2, length.arrowtip=0.1);
+    title("size.scale=\"topology\", toposize.scale=2");unlink("model-Tennessen.cmd")
 
-![Figure 7.1: Three migration plots from Modified Tennessen's model](images/unnamed-chunk-10-1.png)
-
+![Figure 7.1: Three migration plots from Modified Tennessen's
+model](images/unnamed-chunk-10-1.png)
 [\[top\]](#content)
 
 ### Archaic introgrssion model [7]
@@ -526,10 +540,11 @@ in the same size, and the size can be scaled with the parameter
     -en 0.050005 3 0.25 -ej 0.075 2 1 -en 0.0750025 1 1 -ej 0.1 7 3
     -en 0.1000025 3 0.25 -ej 0.3 3 1 -en 0.3000025 1 1", file="test.1.ms.cmd")
     PlotMS(input.file="test.1.ms.cmd", type="ms", N4=10000, 
-    time.scale="kyear", length.arrow=0.1, inpos=c(1,2,5,4.5,5.5,6,3), 
+    time.scale="kyear", length.arrowtip=0.1, inpos=c(1,2,5,4.5,5.5,6,3), 
     col.pop=c("brown", "blue", "forestgreen", rainbow(10)[6:9]));unlink("test.1.ms.cmd")
 
-![Figure 8: Archaic introgrssion model](images/unnamed-chunk-11-1.png)
+![Figure 8: Archaic introgrssion
+model](images/unnamed-chunk-11-1.png)
 
 [\[top\]](#content)
 
@@ -539,9 +554,10 @@ in the same size, and the size can be scaled with the parameter
     -m 3 2 2.5 -m 4 5 2.5 -m 5 4 2.5 -m 5 6 2.5 -m 6 5 2.5 -em 2.0 3 4 2.5
     -em 2.0 4 3 2.5", file="test.2.ms.cmd")
     PlotMS(input.file="test.2.ms.cmd", type="ms", N4=10000, col.pop="gray",
-    col.arrow="black", length.arrow=0.1, lwd.arrow=2);unlink("test.2.ms.cmd")
+    col.arrow="black", length.arrowtip=0.1, lwd.arrow=2);unlink("test.2.ms.cmd")
 
-![Figure 9: Migration](images/unnamed-chunk-12-1.png)
+![Figure 9:
+Migration](images/unnamed-chunk-12-1.png)
 
 [\[top\]](#content)
 
@@ -557,7 +573,8 @@ in the same size, and the size can be scaled with the parameter
     log.base=2, time.scale="kyear",
     pops=c("AFR", "EUR", "ESA"), col.pop=c("brown", "blue", "gold3"));unlink("Ryan2009.cmd")
 
-![Figure 10: Ryan2009](images/unnamed-chunk-13-1.png)
+![Figure 10:
+Ryan2009](images/unnamed-chunk-13-1.png)
 
 [\[top\]](#content)
 
@@ -571,14 +588,15 @@ in the same size, and the size can be scaled with the parameter
     #change the time unit
     PlotMS(input.file="zigzag.cmd", type="ms", N4=10000, time.scale="log10year");unlink("zigzag.cmd")
 
-![Figure 11: zigzag model](images/unnamed-chunk-14-1.png)
+![Figure 11: zigzag
+model](images/unnamed-chunk-14-1.png)
 
 [\[top\]](#content)
 
 ### Demographic plot from msprime's script
 
 This package is able to extract the demographic information from msprime
-by forst converting an msprime script into a ms-compatible command.. For
+by first converting an msprime script into a ms-compatible command.. For
 the ms-compatible command, user only need to set the 'type' to be
 "msprime" and copy the command line to input file; for the python
 scripts, we will use "msprime2ms.py" to translate the simulation script
@@ -682,7 +700,7 @@ demographic history.
     PlotMS(input.file="msprime.demo.cmd", type="msprime", N4=4*10000, 
            size.scale="log", log.base=1.5, inpos=c(1,4,7), time.scale="log10year", 
            col.pop=c("brown", "blue", "gold3"), pops=c("AFR", "EUR", "ASIA"), 
-           cex.lab=1, cex.axis=1, xlab="", length.arrow=0.1)
+           cex.lab=1, cex.axis=1, xlab="", length.arrowtip=0.1)
     title("Demographic histoy")
     NRuler("topleft", Nsize=c(1e4,1e5), Nlab=c("1e4", "1e5"), N4=40000, 
            size.scale="log",log.base=1.5, lwd=1, cex=0.6)
@@ -694,7 +712,8 @@ demographic history.
     legend("topleft", legend=c("AFR", "EUR", "ASIA"), col=c("brown", "blue", "gold3"), pch=20, bty="n")
     title("Migrations at 100 years ago");unlink("msprime.demo.cmd")
 
-![Figure 12: Plot from msprime's input](images/unnamed-chunk-16-1.png)
+![Figure 12: Plot from msprime's
+input](images/unnamed-chunk-16-1.png)
 
 [\[top\]](#content)
 
@@ -717,24 +736,27 @@ file "sample.ms.cmd" to `-eps 5e-04 2 1 0.8`.
            size.scale="log", log.base =50, inpos=c(3,6,1,9),
            col.pop=c("blue", "coral3", "gold3", "brown"),
            pops=c("European", "African American", "Asian", "African"),
-           time.scale="log10year", cex.lab=0.6, cex.axis=0.6, length.arrow=0.05, m.adjust=0.05)
+           time.scale="log10year", cex.lab=0.6, cex.axis=0.6, length.arrowtip=0.05, m.adjust=0.05)
     title("Zoom in recent events", cex=0.8)
     PlotMS(input.file="scrm.demo.cmd", type="scrm", N4=10000,
            size.scale="topology", inpos=c(3,6,1,9),
            col.pop=c("blue", "coral3", "gold3", "brown"),
            pops=c("European", "African American", "Asian", "African"),
-           cex.lab=0.6, cex.axis=0.6, length.arrow=0.05, ylab="Time before present", m.adjust=0.05)
+           cex.lab=0.6, cex.axis=0.6, length.arrowtip=0.05, ylab="Time before present", m.adjust=0.05)
     title("Topology plot", cex=0.8);unlink("scrm.demo.cmd")
 
-![Figure 13: Two types of the demography plots (repeat of Figure 3 with SCRM input)](images/unnamed-chunk-17-1.png)
+![Figure 13: Two types of the demography plots (repeat of Figure 3 with
+SCRM
+input)](images/unnamed-chunk-17-1.png)
 
 [\[top\]](#content)
 
 Acknowledgements
 ----------------
 
-Xiaowen Tian wrote the python script "msprime2ms.py".   
-Prof. Brian L. Browning helped proof-read this tutorial, test R script, and provide abundant suggests to the development of this package.
+Xiaowen Tian wrote the python script "msprime2ms.py".  
+Prof. Brian L. Browning helped proof-read this tutorial, test R script,
+and provide abundant suggests to the package development.
 
 [\[top\]](#content)
 
