@@ -19,6 +19,8 @@ then loaded it with
 
 **Notice:** Safari may automatically unzip the gz file when download the package source, please check this [page](https://apple.stackexchange.com/questions/961/how-to-stop-safari-from-unzipping-files-after-download) for setting how to download without unzipping files.
 
+This package applies to R of version later than ..
+
 ## Docs and materials: doc/
 
 User can start with the [tutorial](doc/POPdemog-tutorial.md), and check function details with the [manual](doc/POPdemog-manual.pdf)
