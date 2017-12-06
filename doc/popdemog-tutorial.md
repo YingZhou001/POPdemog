@@ -485,8 +485,12 @@ More examples
     title("Migrations at 1000 years ago");
 
 ![Figure 7: Modified Tennessen's model](images/unnamed-chunk-9-1.png)
-\#\#\# Customizing the circle sizes in migration plots The size of
-circle in the *PlotMig* plot can be customized by the parameter
+
+[\[top\]](#content)
+
+### Customizing the circle sizes in migration plots 
+
+The size of circles in the *PlotMig* plot can be customized by the parameter
 `size.scale`. When using `size.scale="log"`, circle size is a
 logarithmical function of population size; when using
 `size.scale="topology"`, populations will be represetned by the circles
@@ -508,6 +512,7 @@ in the same size, and the size can be scaled with the parameter
     title("size.scale=\"topology\", topology.scale=2");unlink("model-Tennessen.cmd")
 
 ![Figure 7.1: Three migration plots from Modified Tennessen's model](images/unnamed-chunk-10-1.png)
+
 [\[top\]](#content)
 
 ### Archaic introgrssion model [7]
