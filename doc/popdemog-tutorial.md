@@ -731,7 +731,8 @@ file "sample.ms.cmd" to `-eps 5e-04 2 1 0.8`.
 Acknowledgements
 ----------------
 
-Xiaowen Tian wrote the python script "msprime2ms.py".
+Xiaowen Tian wrote the python script "msprime2ms.py".   
+Prof. Brian L. Browning helped proof-read this tutorial, test R script, and provide abundant suggests to the development of this package.
 
 [\[top\]](#content)
 
