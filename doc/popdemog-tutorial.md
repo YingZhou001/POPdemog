@@ -26,7 +26,7 @@ Content
         plots](#customizing-the-circle-sizes-in-migration-plots)
     -   [Archaic introgression model](#archaic-introgression-model-5)
     -   [Migration model from ms](#migration-model-from-ms)
-    -   [Ryan2009 model](#ryan2009-model9)
+    -   [Ryan2009 model](#ryan2009-model8)
     -   [Zigzag model](#zigzag-model)
     -   [Demographic plot from msprime's
         script](#demographic-plot-from-msprimes-script)
