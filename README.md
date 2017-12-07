@@ -2,6 +2,9 @@
 POPdemog is a R package to visualize demographic history from coalescent simulation script. 
 Currently, this POPdemog package does not check the simulation program input for correctness, but assumes the simulation program input has been validated by the simulation program.
 
+We have verified the POPdemog package can be installed on R of version 2.15.0, 2.15.1, 3.0.0, 3.0.2, 3.1.0, 3.1.2, 3.2.0, 3.2.2, 3.3.0, 3.3.2, 3.4.1, and 3.4.3; but not all examples in the tutorial file can run on all these versions. We suggest user to use R (>= 3.3.0) to install and run this package.
+   
+
 Who to blame: Ying Zhou (yz001(at)uw(dot)edu)
 
 ## Installation
