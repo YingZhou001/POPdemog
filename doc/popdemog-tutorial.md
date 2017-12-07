@@ -21,7 +21,7 @@ Content
     -   [Adding migrations to maps](#adding-migrations-to-maps)
 -   [More examples](#more-examples)
     -   [Modified Tennessen model with Neanderthal
-        introgression](#modified-tennessen-model-with-neanderthal-introgression4)
+        introgression](#modified-tennessen-model-with-neanderthal-introgression6)
     -   [Customizing the circle sizes in migration
         plots](#customizing-the-circle-sizes-in-migration-plots)
     -   [Archaic introgression model](#archaic-introgression-model-5)
