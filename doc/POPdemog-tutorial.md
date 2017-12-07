@@ -1,4 +1,8 @@
+# Population demographic history visualization with R package: POPdemog
 
+Ying Zhou
+
+2017-12-07
 
 Content
 -------
