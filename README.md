@@ -3,9 +3,6 @@ POPdemog is a R package to visualize demographic history from coalescent simulat
 Currently, this POPdemog package does not check the simulation program input for correctness, but assumes the simulation program input has been validated by the simulation program.
 
 We have verified the POPdemog package can be installed on R of version 2.15.0, 2.15.1, 3.0.0, 3.0.2, 3.1.0, 3.1.2, 3.2.0, 3.2.2, 3.3.0, 3.3.2, 3.4.1, and 3.4.3; but not all examples in the tutorial file can run on all these versions. We suggest user to use R (>= 3.3.0) to install and run this package.
-   
-
-Who to blame: Ying Zhou (yz001(at)uw(dot)edu)
 
 ## Installation
 We are working on submitting this package to the CRAN.
@@ -22,8 +19,6 @@ then loaded it with
         library(POPdemog)
 
 **Note:** Safari may automatically unzip the gz file when download the package source. Please see this [page](https://apple.stackexchange.com/questions/961/how-to-stop-safari-from-unzipping-files-after-download) for how to download files with Safari without unzipping files.
-
-This package applies to R of version later than ..
 
 ## Docs and materials: doc/
 
@@ -51,3 +46,7 @@ Usage:
 An example:
 
 python [tools/msprime2ms.py](tools/msprime2ms.py) [doc/demo1.py](doc/demo1.py) population_configurations migration_matrix demographic_events > msprime.demo.cmd
+
+
+
+Who to blame: Ying Zhou (yz001(at)uw(dot)edu)
