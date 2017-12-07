@@ -1,5 +1,6 @@
 # POPdemog
-Demographic history visualization from coalescent simulation script
+POPdemog is a R package to visualize demographic history from coalescent simulation script. 
+Currently, this POPdemog package does not check the simulation program input for correctness, but assumes the simulation program input has been validated by the simulation program.
 
 Who to blame: Ying Zhou (yz001(at)uw(dot)edu)
 
