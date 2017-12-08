@@ -27,12 +27,12 @@ Content
     sizes](#displaying-real-population-sizes)
 -   [More examples](#more-examples)
     -   [Modified Tennessen model with Neanderthal
-        introgression](#modified-tennessen-model-with-neanderthal-introgression4)
+        introgression](#modified-tennessen-model-with-neanderthal-introgression6)
     -   [Customizing the circle sizes in migration
         plots](#customizing-the-circle-sizes-in-migration-plots)
-    -   [Archaic introgression model](#archaic-introgression-model-5)
+    -   [Archaic introgression model](#archaic-introgression-model-7)
     -   [Migration model from ms](#migration-model-from-ms)
-    -   [Ryan2009 model](#ryan2009-model9)
+    -   [Ryan2009 model](#ryan2009-model8)
     -   [Zigzag model](#zigzag-model)
     -   [Demographic plot from msprime's
         script](#demographic-plot-from-msprimes-script)
@@ -267,8 +267,8 @@ specified in order to give the correct times for demographic events and
 the accurate sizes for populations.
 
 The `N4` parameter is not used in two situations:  
-1. when producing a topology plot with `size.scale="topology"`; 2. when
-the simulation script do not re-scale the population size and time, such
+1. when producing a topology plot with `size.scale="topology"`;   
+2. when the simulation script do not re-scale the population size and time, such
 as is the case with Cosi.
 
 [\[top\]](#content)
@@ -545,8 +545,8 @@ More examples
            col=c("brown", "blue", "gold3", "forestgreen"), pch=20, bty="n")
     title("Migrations 1000 years ago");
 
-![Figure 7: Modified Tennessen's
-model](images/unnamed-chunk-9-1.png)
+![Figure 7: Modified Tennessen's model](images/unnamed-chunk-9-1.png)
+
 [\[top\]](#content)
 
 ### Customizing the circle sizes in migration plots
