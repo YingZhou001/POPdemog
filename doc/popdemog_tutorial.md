@@ -27,12 +27,12 @@ Content
 -   [Displaying population sizes](#displaying-population-sizes)
 -   [More examples](#more-examples)
     -   [Modified Tennessen model with Neanderthal
-        introgression](#modified-tennessen-model-with-neanderthal-introgression4)
+        introgression](#modified-tennessen-model-with-neanderthal-introgression6)
     -   [Customizing the circle sizes in migration
         plots](#customizing-the-circle-sizes-in-migration-plots)
-    -   [Archaic introgression model](#archaic-introgression-model-5)
+    -   [Archaic introgression model](#archaic-introgression-model-7)
     -   [Migration model from ms](#migration-model-from-ms)
-    -   [Ryan2009 model](#ryan2009-model9)
+    -   [Ryan2009 model](#ryan2009-model8)
     -   [Zigzag model](#zigzag-model)
     -   [Demographic plot from msprime's
         script](#demographic-plot-from-msprimes-script)
@@ -281,7 +281,7 @@ file "sample.ms.cmd", with `N4` set to 10000 in this case.
     PlotMS(input.file="sample.ms.cmd", type="ms", N4=10000)
 
 ![Figure 1: Basic
-plot](images/figure-markdown_strict/unnamed-chunk-3-1.png)
+plot](images/unnamed-chunk-3-1.png)
 
 This basic plot is usually not satisfactory. However, there are many
 options which will allow us to customize the output figure.
@@ -318,7 +318,7 @@ Adding these settings to *PlotMS()*, we have:
            pops=c("European", "African American", "Asian", "African"))
 
 ![Figure 2: Adding color and population names to the basic
-plot](images/figure-markdown_strict/unnamed-chunk-4-1.png)
+plot](images/unnamed-chunk-4-1.png)
 
 If the recent events are more interesting than ancient ones, we can zoom
 in with
@@ -364,7 +364,7 @@ Applying these adjustments, we obtain:
     title("Topology plot", cex=0.8)
 
 ![Figure 3: Two types of demography
-plots](images/figure-markdown_strict/unnamed-chunk-5-1.png)
+plots](images/unnamed-chunk-5-1.png)
 
 [\[top\]](#content)
 
@@ -401,7 +401,7 @@ command in R.
     PlotMMig(demograph_out=out$demograph_out, mig_par=out$mig_par)
 
 ![Figure 4: Overview of all
-migrations](images/figure-markdown_strict/unnamed-chunk-6-1.png)
+migrations](images/unnamed-chunk-6-1.png)
 
 [\[top\]](#content)
 
@@ -435,7 +435,7 @@ are specified by the `time.scale` parameter.
     title(paste("Time: 125 years ago"))
 
 ![Figure 5: Migration at the specified
-time](images/figure-markdown_strict/unnamed-chunk-7-1.png)
+time](images/unnamed-chunk-7-1.png)
 
 In the Figure 5, the color and size of arrows can also be customized by
 the variables `col.arrow` and the `length.arrowtip`, please check the
@@ -482,7 +482,7 @@ make each population circle large enough to be easily seen.
     }
 
 ![Figure 6: Add migrations to a
-map](images/figure-markdown_strict/unnamed-chunk-8-1.png)
+map](images/unnamed-chunk-8-1.png)
 
 [\[top\]](#content)
 
@@ -544,7 +544,7 @@ More examples
     title("Migrations 1000 years ago");
 
 ![Figure 7: Modified Tennessen's
-model](images/figure-markdown_strict/unnamed-chunk-9-1.png)
+model](images/unnamed-chunk-9-1.png)
 
 [\[top\]](#content)
 
@@ -578,7 +578,9 @@ be scaled by the `toposize.scale` parameter.
     title("size.scale=\"topology\", toposize.scale=2");unlink("model-Tennessen.cmd")
 
 ![Figure 7.1: Three migration plots from Modified Tennessen's
-model](images/figure-markdown_strict/unnamed-chunk-10-1.png)
+model](images/unnamed-chunk-10-1.png)
+
+
 [\[top\]](#content)
 
 ### Archaic introgression model [7]
@@ -594,7 +596,7 @@ model](images/figure-markdown_strict/unnamed-chunk-10-1.png)
     col.pop=c("brown", "blue", "forestgreen", rainbow(10)[6:9]));unlink("test.1.ms.cmd")
 
 ![Figure 8: Archaic introgrssion
-model](images/figure-markdown_strict/unnamed-chunk-11-1.png)
+model](images/unnamed-chunk-11-1.png)
 
 [\[top\]](#content)
 
@@ -607,7 +609,7 @@ model](images/figure-markdown_strict/unnamed-chunk-11-1.png)
     col.arrow="black", length.arrowtip=0.1, lwd.arrow=2);unlink("test.2.ms.cmd")
 
 ![Figure 9:
-Migration](images/figure-markdown_strict/unnamed-chunk-12-1.png)
+Migration](images/unnamed-chunk-12-1.png)
 
 [\[top\]](#content)
 
@@ -624,7 +626,7 @@ Migration](images/figure-markdown_strict/unnamed-chunk-12-1.png)
     pops=c("AFR", "EUR", "ESA"), col.pop=c("brown", "blue", "gold3"));unlink("Ryan2009.cmd")
 
 ![Figure 10:
-Ryan2009](images/figure-markdown_strict/unnamed-chunk-13-1.png)
+Ryan2009](images/unnamed-chunk-13-1.png)
 
 [\[top\]](#content)
 
@@ -639,7 +641,7 @@ Ryan2009](images/figure-markdown_strict/unnamed-chunk-13-1.png)
     PlotMS(input.file="zigzag.cmd", type="ms", N4=10000, time.scale="log10year");unlink("zigzag.cmd")
 
 ![Figure 11: zigzag
-model](images/figure-markdown_strict/unnamed-chunk-14-1.png)
+model](images/unnamed-chunk-14-1.png)
 
 [\[top\]](#content)
 
@@ -763,7 +765,7 @@ demographic history.
     title("Migrations 100 years ago");unlink("msprime.demo.cmd")
 
 ![Figure 12: Plot from msprime's
-input](images/figure-markdown_strict/unnamed-chunk-16-1.png)
+input](images/unnamed-chunk-16-1.png)
 
 [\[top\]](#content)
 
@@ -797,7 +799,7 @@ file "sample.ms.cmd" to `-eps 5e-04 2 1 0.8`.
 
 ![Figure 13: Two types of the demography plots (repeat of Figure 3 with
 SCRM
-input)](images/figure-markdown_strict/unnamed-chunk-17-1.png)
+input)](images/unnamed-chunk-17-1.png)
 
 [\[top\]](#content)
 
