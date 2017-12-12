@@ -574,6 +574,7 @@ be scaled by the `toposize.scale` parameter.
 
 ![Figure 7.1: Three migration plots from Modified Tennessen's
 model](images/unnamed-chunk-10-1.png)
+
 [\[top\]](#content)
 
 ### Archaic introgression model [7]
