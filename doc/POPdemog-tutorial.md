@@ -136,8 +136,10 @@ Supported Simulators
 Installing the POPdemog package
 -------------------------------
 
-We are working on submitting this package to the CRAN. User can also
-[download](https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz)
+User can install package POPdemog from CRAN as:
+
+    install.packages("POPdemog")
+User can also [download](https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz)
 and install it with the R command:
 
     install.package("POPdemog_1.0.3.tar.gz", repos=NULL, source=TRUE)
