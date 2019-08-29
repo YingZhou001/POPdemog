@@ -4,9 +4,16 @@ Currently, this POPdemog package does not check the simulation program input for
 
 We have verified the POPdemog package can be installed on R of version 2.15.0, 2.15.1, 3.0.0, 3.0.2, 3.1.0, 3.1.2, 3.2.0, 3.2.2, 3.3.0, 3.3.2, 3.4.1, and 3.4.3; but not all examples in the tutorial file can run on all these versions. We suggest user to use R (>= 3.3.0) to install and run this package.
 
+## Citation
+
+Zhou, Y., Tian, X., Browning, B.L. and Browning, S.R., 2018. POPdemog: visualizing population demographic history from simulation scripts. Bioinformatics, 34(16), pp.2854-2855.
+
 ## Installation
-We are working on submitting this package to the CRAN.
-Before that, user can [download](https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz) and then install it as
+Now user can install this package directly from the CRAN as:
+
+        install.packages("POPdemog")
+
+User can also [download](https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz) and then install it as
 
         install.package("POPdemog_1.0.3.tar.gz", repos=NULL, source=TRUE)
 
