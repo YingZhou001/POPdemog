@@ -1,3 +1,5 @@
+## update: fix admixture issue
+
 ## usage: python ms.py demofile population_configurations migration_matrix demographic_events
 
 import sys
@@ -85,11 +87,13 @@ while not math.isinf(end_time):
     for event in events:
         assert almost_equal(event.time, start_time, abs_tol=abs_tol)
         scaled_event_time = scaled_time(event.time)
+        scaled_event_time_plus1 = scaled_time(event.time+1)
         if ('source' in dir(event) and 'dest' in dir(event)):
           if (event.proportion==1):
             print('--population-split ' + str(scaled_event_time) + ' ' + str(event.source+1) + ' ' + str(event.dest+1))
           if (event.proportion<1):
-            print('--admixture ' + str(scaled_event_time) + ' ' + str(event.source+1) + ' ' + str(event.proportion))
+            print('--migration-matrix-entry-change ' + str(scaled_event_time) + ' ' + str(event.source+1) + ' ' + str(event.dest+1) + ' ' + str(event.proportion))
+            print('--migration-matrix-entry-change ' + str(scaled_event_time_plus1) + ' ' + str(event.source+1) + ' ' + str(event.dest+1) + ' 0') 
         if ('initial_size' in dir(event) and event.initial_size is not None):
           print ('--population-size-change ' + str(scaled_event_time) + ' ' + str(event.population+1) + ' ' + str(event.initial_size/float(Ne)))
         if ('growth_rate' in dir(event) and event.growth_rate is not None):
